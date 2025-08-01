@@ -1,8 +1,24 @@
 let pbtm = document.querySelector("#pbtm");
-let music = document.getElementById("click-sound");
+let rightMusic = document.getElementById("click-right-sound");
+let wrongMusic = document.getElementById("click-wrong-sound");
+let panel = document.getElementById("panel");
 
-let hitVal = "";
+let hitVal = " ";
 let score = 0;
+let timer = 6;
+
+document.getElementById("startgame").addEventListener("click", startGame)
+
+function startGame() {
+    panel.classList.remove("panelrecreated")
+    panel.style.display = "block";
+    document.getElementById("startgame").style.display = "none";
+
+    increseScore()
+    runTimer()
+    makeBubble();
+    hitRn();
+}
 
 function makeBubble() {
     let cluster = "";
@@ -21,6 +37,33 @@ function hitRn() {
     document.getElementById("hitval").textContent = hitVal
 }
 
+function runTimer() {
+    let yourInterval = setInterval(() => {
+        if (timer > 0) {
+            timer--;
+            document.getElementById("timeval").textContent = timer;
+        } else {
+            clearInterval(yourInterval);
+            panel.innerHTML = `
+                                        <div class ="gameoverdiv">  
+                                        <h2 class="gameovertext"> Game Over </h2> 
+                                        <h1 class="score"> Your Score is 🎰 ${score}</h1>
+                                        <button id="playagaingame"> Play Again </button>
+                                        </div>
+                                    
+            `;
+            panel.classList.add("panelrecreated");
+
+            document.getElementById("playagaingame").addEventListener("click", () => {
+                console.log("Click Play Again button ");
+                location.reload();
+            })
+
+        }
+    }, 1000);
+
+
+}
 
 function increseScore() {
 
@@ -33,40 +76,20 @@ function increseScore() {
             document.getElementById("scoreval").textContent = score;
             hitRn();
             makeBubble();
-            music.currentTime = 0;
-            music.play();
+            rightMusic.currentTime = 0;
+            rightMusic.play();
 
 
         } else {
             console.log("Wrong Selection .....  ")
+            wrongMusic.currentTime = 0;
+            wrongMusic.play();
         }
     })
 
 
 }
 
-function runTimer() {
-
-    let timer = 60;
-    let yourInterval = setInterval(() => {
-        if (timer > 0) {
-            timer--;
-            document.getElementById("timeval").textContent = timer;
-        } else {
-            clearInterval(yourInterval);
-            document.getElementById("pbtm").innerHTML = `
-                                        <div>  
-                                        <h2 class="gameover"> Game Over </h2> 
-                                        <h1 class="score"> Your Score is 🎰 ${score}</h1>
-                                        </div>
-            `;
-        }
-    }, 1000);
 
 
-}
 
-increseScore()
-runTimer()
-makeBubble();
-hitRn();

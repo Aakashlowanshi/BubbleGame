@@ -5,12 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bubble Game</title>
+    <link rel="icon" type="image/png" href="./images/Ak.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div id="main">
+
+        <div>
+            <button id="startgame">
+                Start Game
+            </button>
+        </div>
+
         <div id="panel">
             <div id="ptop">
 
@@ -33,7 +41,8 @@
             </div>
 
             <div id="pbtm">
-                <audio id="click-sound" src="audio/bubble-click.mp3"></audio>
+                <audio id="click-right-sound" src="audio/bubble-click.mp3"></audio>
+                <audio id="click-wrong-sound" src="audio/wronganswer.mp3"></audio>
                 <!-- <div class="bubble">
                     1
                 </div> -->

@@ -18,14 +18,54 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url(./images/main.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 80%;
+}
+
+#main #startgame {
+    font-size: 25px;
+    border: none;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 10px 20px;
+    animation: pop 0.3s ease;
+    transition: transform 0.2s;
+    color: #ffff;
+    background-color: rgb(61, 240, 180);
+    box-shadow: 1px 5px 3px 2px #5a5a5a;
+    /* transform: rotate(-10deg) skewx(30deg); */
+}
+
+#main #startgame:hover,
+#playagaingame:hover {
+    color: rgb(61, 230, 150);
+    background-color: #fff;
+    box-shadow: 1px 3px 3px 2px rgb(61, 240, 180);
 }
 
 #panel {
+    display: none;
     width: 80%;
     height: 80%;
-    background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
+    background-image: url(./images/bubble.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 80%;
+    position: relative;
+}
+
+#panel:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #3a33334b;
 }
 
 #ptop {
@@ -36,6 +76,8 @@ body {
     height: 50px;
     padding: 0px 30%;
     background-color: rgb(84, 153, 84);
+    position: absolute;
+    z-index: 99;
 }
 
 #elem {
@@ -71,6 +113,9 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    position: absolute;
+    top: 40px;
+    z-index: 99;
 }
 
 .bubble {
@@ -80,30 +125,68 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgb(106, 196, 140);
-    color: #fff;
+    background-color: rgb(77, 199, 122);
+    color: #141414;
     font-weight: 600;
     font-size: 20px;
     animation: pop 0.3s ease;
     transition: transform 0.2s;
 }
 
+.bubble:nth-child(even) {
+    background-color: rgb(68, 156, 122);
+}
+
+.bubble:nth-child(odd) {
+    background-color: rgb(86, 159, 161);
+}
+
+
 .bubble:hover {
     background-color: rgb(18, 119, 57);
     cursor: pointer;
+    color: #fff;
 }
 
-.gameover {
-    font-size: 50px;
+.gameoverdiv {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
     font-weight: 800;
+    color: #fff;
+    z-index: 99;
+    animation: pop 0.3s ease;
+    transition: transform 0.2s;
+}
+
+.gameovertext {
+    font-size: 50px;
     font-style: italic;
 }
 
+#playagaingame {
+    font-size: 22px;
+    font-weight: 600;
+    font-style: italic;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    z-index: 9999;
+
+}
+
 .score {
-    margin-top: 20px;
+    margin: 10px 0;
     font-size: 24px;
     font-family: Arial, Helvetica;
     font-weight: 600;
+}
+
+.panelrecreated {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
 }
 
 
