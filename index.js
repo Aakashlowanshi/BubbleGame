@@ -5,7 +5,7 @@ let panel = document.getElementById("panel");
 
 let hitVal = " ";
 let score = 0;
-let timer = 6;
+let timer = 60;
 
 document.getElementById("startgame").addEventListener("click", startGame)
 
@@ -23,6 +23,7 @@ function startGame() {
 function makeBubble() {
     let cluster = "";
     for (let i = 0; i <= 188; i++) {
+        // for (let i = 0; i <= 50; i++) {
         let rn = Math.floor(Math.random() * 10);
         cluster += `<div class="bubble">
                         ${rn}
@@ -70,6 +71,7 @@ function increseScore() {
     pbtm.addEventListener("click", (detls) => {
         let bubbleVal = Number(detls.target.textContent);
         // console.log(bubbleVal);
+
 
         if (bubbleVal === hitVal) {
             score += 10;
